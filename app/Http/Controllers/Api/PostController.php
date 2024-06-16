@@ -9,8 +9,8 @@ use App\Models\Project;
 class PostController extends Controller
 {
     public function index() {
-            $projects = Project::all();
-
+            $projects = Project::with('type', 'tags')->get();
+        
         return response()->json([
             'success' => true,
             'results' => $projects
